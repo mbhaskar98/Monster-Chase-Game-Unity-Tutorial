@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]
-    private float moveForce = 10f;
-    [SerializeField]
+    // // [SerializeField]
+    private float moveForce = 12f;
+    // // [SerializeField]
     private float jumpForce = 11f;
     private float movementX;
     private Rigidbody2D myBody;
@@ -16,11 +16,16 @@ public class Player : MonoBehaviour
     private Animator anim;
     private string WALK_ANIMATION = "Walk";
 
+    private string GROUND_TAG = "Ground";
+
+    private bool isGrounded;
+
     private void Awake()
     {
         myBody = gameObject.GetComponent<Rigidbody2D>();
         sr = gameObject.GetComponent<SpriteRenderer>();
         anim = gameObject.GetComponent<Animator>();
+        isGrounded = true;
         // Debug.Log(sr.sprite);
 
         // Sprite[] t = Resources.LoadAll<Sprite>("Players");
@@ -46,8 +51,14 @@ public class Player : MonoBehaviour
         PlayerMoveKeyboard();
         AnimatePlayer();
 
-       
-        
+
+
+    }
+
+
+    private void FixedUpdate()
+    {
+        PlayerJump();
     }
 
     void PlayerMoveKeyboard()
@@ -73,6 +84,24 @@ public class Player : MonoBehaviour
         else
         {
             anim.SetBool(WALK_ANIMATION, false);
+        }
+    }
+
+    void PlayerJump()
+    {
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            isGrounded = false;
+            myBody.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+        }
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag(GROUND_TAG))
+        {
+            isGrounded = true;
         }
     }
 }
