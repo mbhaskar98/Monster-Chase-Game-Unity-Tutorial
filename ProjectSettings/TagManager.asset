@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Moon_Tag
   layers:
   - Default
   - TransparentFX
