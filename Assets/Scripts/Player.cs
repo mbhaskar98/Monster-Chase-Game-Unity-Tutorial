@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
         sr = gameObject.GetComponent<SpriteRenderer>();
         anim = gameObject.GetComponent<Animator>();
         isGrounded = true;
+        transform.position = new Vector3(0f, transform.position.y, transform.position.z);
         // Debug.Log(sr.sprite);
 
         // Sprite[] t = Resources.LoadAll<Sprite>("Players");
