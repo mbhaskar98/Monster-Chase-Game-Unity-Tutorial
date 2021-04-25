@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4295340410891160686}
   - component: {fileID: 4295340410891160682}
   - component: {fileID: 4295340410891160685}
+  - component: {fileID: 7439347648695504111}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
@@ -138,7 +139,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4295340410891160673}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -150,4 +151,17 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &7439347648695504111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4295340410891160673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64f60356bab1ec949a499bf54449a1c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
