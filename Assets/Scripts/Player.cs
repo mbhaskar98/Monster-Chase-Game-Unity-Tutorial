@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
 
     private string GROUND_TAG = "Ground";
 
+    private string ENEMY_TAG = "Enemy";
+
     private bool isGrounded;
 
     private void Awake()
@@ -27,17 +29,6 @@ public class Player : MonoBehaviour
         anim = gameObject.GetComponent<Animator>();
         isGrounded = true;
         transform.position = new Vector3(0f, transform.position.y, transform.position.z);
-        // Debug.Log(sr.sprite);
-
-        // Sprite[] t = Resources.LoadAll<Sprite>("Players");
-        // sr.sprite = t[8];
-        // Debug.Log(t[8]);
-        // Image m_Image = GetComponent<Image>();
-
-        //  Debug.Log(m_Image);
-
-        // Debug.Log(anim.runtimeAnimatorController.animationClips[0].length);
-
     }
 
     // Start is called before the first frame update
@@ -104,5 +95,12 @@ public class Player : MonoBehaviour
         {
             isGrounded = true;
         }
+
+        if (other.gameObject.CompareTag(ENEMY_TAG))
+        {
+            Destroy(gameObject);
+
+        }
+
     }
 }

@@ -17,9 +17,9 @@ public class CameraFollow : MonoBehaviour
     private float minX, maxX;
     void Start()
     {
-        player = GameObject.FindWithTag(PLAYER_TAG).transform; 
+        player = GameObject.FindWithTag(PLAYER_TAG).transform;
         moon = GameObject.FindWithTag(MOON_TAG).transform;
-        moon.position  = new Vector3(0f, moon.position.y, moon.position.z);  
+        moon.position = new Vector3(0f, moon.position.y, moon.position.z);
         Debug.Log(moon.position);
         minX = (float)-61;
         maxX = (float)61;
@@ -28,20 +28,27 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        if (!player)
+        {
+            return;
+        }
+
         tempPos = transform.position;
         tempPos.x = player.position.x;
 
-        if(tempPos.x < minX) {
+        if (tempPos.x < minX)
+        {
             tempPos.x = minX;
         }
-        if(tempPos.x > maxX){
+        if (tempPos.x > maxX)
+        {
             tempPos.x = maxX;
         }
-        
+
         transform.position = tempPos;
         tempPos.x -= (float)7;
-        
+
         moon.position = new Vector3(tempPos.x, moon.position.y, moon.position.z);
-        
+
     }
 }

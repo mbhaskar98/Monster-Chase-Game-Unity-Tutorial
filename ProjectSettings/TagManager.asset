@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Moon_Tag
+  - Enemy
   layers:
   - Default
   - TransparentFX
