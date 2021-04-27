@@ -12,7 +12,6 @@ public class Monster : MonoBehaviour
 
     private void Awake() {
         myBody = gameObject.GetComponent<Rigidbody2D>();
-        speed = 7f;
     }
 
     private void FixedUpdate() {
