@@ -18,6 +18,7 @@ public class Monster : MonoBehaviour
 
     private void FixedUpdate()
     {
+
         myBody.velocity = new Vector2(speed, myBody.velocity.y);
     }
 
@@ -29,7 +30,6 @@ public class Monster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -37,6 +37,17 @@ public class Monster : MonoBehaviour
         if (other.gameObject.CompareTag(ENEMY_TAG))
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag(ENEMY_TAG))
+        {
+            if (!(gameObject.GetComponent<CapsuleCollider2D>().isTrigger))
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
